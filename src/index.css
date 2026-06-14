@@ -1,0 +1,234 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Space+Grotesk:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap');
+@import "tailwindcss";
+
+:root {
+  --brand-navy: #050611;
+  --brand-electric: #2F46FF;
+  --brand-glow: #5367FF;
+  --bg-main: #050611;
+  --bg-surface: #080A18;
+  --bg-panel: rgba(255, 255, 255, 0.03);
+  --bg-panel-strong: rgba(255, 255, 255, 0.06);
+  --text-primary: #FFFFFF;
+  --text-secondary: rgba(255, 255, 255, 0.68);
+  --text-muted: rgba(255, 255, 255, 0.48);
+  --border-panel: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.16);
+  --button-primary-bg: #2F46FF;
+  --button-primary-text: #FFFFFF;
+  --button-secondary-bg: rgba(255, 255, 255, 0.06);
+  --button-secondary-text: #FFFFFF;
+  --shadow-soft: 0 24px 80px rgba(0, 0, 0, 0.36);
+  --glow-primary: 0 0 80px rgba(83, 103, 255, 0.45);
+  color-scheme: dark;
+}
+
+[data-theme="dark"] {
+  --brand-navy: #050611;
+  --brand-electric: #2F46FF;
+  --brand-glow: #5367FF;
+  --bg-main: #050611;
+  --bg-surface: #080A18;
+  --bg-panel: rgba(255, 255, 255, 0.03);
+  --bg-panel-strong: rgba(255, 255, 255, 0.06);
+  --text-primary: #FFFFFF;
+  --text-secondary: rgba(255, 255, 255, 0.68);
+  --text-muted: rgba(255, 255, 255, 0.48);
+  --border-panel: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.16);
+  --button-primary-bg: #2F46FF;
+  --button-primary-text: #FFFFFF;
+  --button-secondary-bg: rgba(255, 255, 255, 0.06);
+  --button-secondary-text: #FFFFFF;
+  --shadow-soft: 0 24px 80px rgba(0, 0, 0, 0.36);
+  --glow-primary: 0 0 80px rgba(83, 103, 255, 0.45);
+  color-scheme: dark;
+}
+
+[data-theme="clinical-light"] {
+  --brand-navy: #0F172A;
+  --brand-electric: #0F766E;
+  --brand-glow: #14B8A6;
+  --bg-main: #F8FAFC;
+  --bg-surface: #FFFFFF;
+  --bg-panel: rgba(255, 255, 255, 0.86);
+  --bg-panel-strong: #FFFFFF;
+  --text-primary: #0F172A;
+  --text-secondary: #475569;
+  --text-muted: #64748B;
+  --border-panel: rgba(15, 23, 42, 0.10);
+  --border-strong: rgba(15, 23, 42, 0.18);
+  --button-primary-bg: #0F766E;
+  --button-primary-text: #FFFFFF;
+  --button-secondary-bg: #ECFDF5;
+  --button-secondary-text: #0F766E;
+  --shadow-soft: 0 24px 70px rgba(15, 23, 42, 0.10);
+  --glow-primary: 0 0 80px rgba(20, 184, 166, 0.22);
+  color-scheme: light;
+}
+
+[data-theme="dark-teal"] {
+  --brand-navy: #031716;
+  --brand-electric: #14B8A6;
+  --brand-glow: #2DD4BF;
+  --bg-main: #031716;
+  --bg-surface: #062321;
+  --bg-panel: rgba(255, 255, 255, 0.04);
+  --bg-panel-strong: rgba(255, 255, 255, 0.07);
+  --text-primary: #F8FAFC;
+  --text-secondary: rgba(248, 250, 252, 0.72);
+  --text-muted: rgba(248, 250, 252, 0.50);
+  --border-panel: rgba(255, 255, 255, 0.10);
+  --border-strong: rgba(45, 212, 191, 0.24);
+  --button-primary-bg: #14B8A6;
+  --button-primary-text: #031716;
+  --button-secondary-bg: rgba(20, 184, 166, 0.10);
+  --button-secondary-text: #CCFBF1;
+  --shadow-soft: 0 24px 80px rgba(0, 0, 0, 0.32);
+  --glow-primary: 0 0 80px rgba(45, 212, 191, 0.32);
+  color-scheme: dark;
+}
+
+[data-theme="light-teal"] {
+  --brand-navy: #0B1F1D;
+  --brand-electric: #0F766E;
+  --brand-glow: #0D9488;
+  --bg-main: #F3FAF8;
+  --bg-surface: #FFFFFF;
+  --bg-panel: rgba(255, 255, 255, 0.88);
+  --bg-panel-strong: #FFFFFF;
+  --text-primary: #0B1F1D;
+  --text-secondary: #335C58;
+  --text-muted: #647C78;
+  --border-panel: rgba(11, 31, 29, 0.10);
+  --border-strong: rgba(15, 118, 110, 0.24);
+  --button-primary-bg: #0F766E;
+  --button-primary-text: #FFFFFF;
+  --button-secondary-bg: #DDF7F2;
+  --button-secondary-text: #0B5F59;
+  --shadow-soft: 0 24px 70px rgba(11, 31, 29, 0.10);
+  --glow-primary: 0 0 80px rgba(13, 148, 136, 0.22);
+  color-scheme: light;
+}
+
+body {
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-mono: "Fira Code", ui-monospace, SFMono-Regular, monospace;
+
+  /* Premium theme colors and gradients mapped to CSS custom properties */
+  --color-brand-navy: var(--brand-navy);
+  --color-brand-electric: var(--brand-electric);
+  --color-brand-glow: var(--brand-glow);
+  --color-bg-main: var(--bg-main);
+  --color-bg-surface: var(--bg-surface);
+  --color-bg-panel: var(--bg-panel);
+  --color-bg-panel-strong: var(--bg-panel-strong);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-border-panel: var(--border-panel);
+  --color-border-strong: var(--border-strong);
+  --color-button-primary-bg: var(--button-primary-bg);
+  --color-button-primary-text: var(--button-primary-text);
+  --color-button-secondary-bg: var(--button-secondary-bg);
+  --color-button-secondary-text: var(--button-secondary-text);
+  --shadow-soft: var(--shadow-soft);
+  --glow-primary: var(--glow-primary);
+}
+
+/* Custom subtle keyframe animations for premium ambient feel */
+@keyframes ambientGlow {
+  0%, 100% {
+    transform: translate(0px, 0px) scale(1) rotate(0deg);
+    opacity: 0.75;
+  }
+  33% {
+    transform: translate(30px, -40px) scale(1.1) rotate(120deg);
+    opacity: 0.85;
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9) rotate(240deg);
+    opacity: 0.7;
+  }
+}
+
+@keyframes slowWave {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes pulseThin {
+  0%, 100% {
+    opacity: 0.4;
+    filter: brightness(1);
+  }
+  50% {
+    opacity: 0.75;
+    filter: brightness(1.25);
+  }
+}
+
+.animate-glow-slow {
+  animation: ambientGlow 20s infinite ease-in-out;
+}
+
+.animate-pulse-thin {
+  animation: pulseThin 6s infinite ease-in-out;
+}
+
+.bg-gradient-flow {
+  background-size: 200% 200%;
+  animation: slowWave 15s infinite ease-in-out;
+}
+
+/* Custom scrollbar to keep it super sleek */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #050611;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Glassmorphic border glow & blur definitions */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.light-glass-panel {
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+/* Custom typographic styles matching reference exactly */
+.italic-heavy {
+  font-family: var(--font-sans);
+  font-style: italic;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
