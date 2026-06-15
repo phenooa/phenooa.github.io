@@ -1,41 +1,35 @@
 import React, { useState } from "react";
-import { Download, Apple, Monitor, Terminal, CheckCircle2, ShieldCheck, Cpu } from "lucide-react";
+import { Download, Apple, Monitor, Terminal, CheckCircle2, ShieldCheck, Cpu, Lock, X } from "lucide-react";
 
 export default function DownloadView() {
-  const [downloadState, setDownloadState] = useState<"idle" | "preparing" | "progress" | "complete">("idle");
-  const [progress, setProgress] = useState(0);
+  const [downloadState, setDownloadState] = useState<"idle" | "complete">("idle");
+  const [showCodeModal, setShowCodeModal] = useState(false);
+  const [inputCode, setInputCode] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const handleDownloadClick = () => {
+    setShowCodeModal(true);
+    setInputCode("");
+    setErrorMessage("");
+  };
+
+  const handleVerify = () => {
+    if (inputCode === "Ben2026") {
+      setShowCodeModal(false);
+      startDownload();
+    } else {
+      setErrorMessage("Access denied. Invalid code.");
+    }
+  };
 
   const startDownload = () => {
-    if (downloadState !== "idle") return;
-    setDownloadState("preparing");
-    setTimeout(() => {
-      setDownloadState("progress");
-      let currentProgress = 0;
-      const interval = setInterval(() => {
-        currentProgress += Math.floor(Math.random() * 15) + 5;
-        if (currentProgress >= 100) {
-          currentProgress = 100;
-          clearInterval(interval);
-          setDownloadState("complete");
-          
-          // Trigger actual download of the macOS installer DMG
-          const element = document.createElement("a");
-          element.href = "https://github.com/tommyngx/OAcheck/releases/download/PhenoOAv0.1.0beta/PhenoOA-AI-0.1.0-beta.0-internal-arm64.dmg";
-          element.target = "_blank";
-          element.rel = "noopener noreferrer";
-          document.body.appendChild(element);
-          element.click();
-          document.body.removeChild(element);
-        } else {
-          setProgress(currentProgress);
-        }
-      }, 150);
-    }, 800);
+    // Trigger actual download of the macOS installer DMG immediately to prevent popup blocker / routing issues
+    window.location.href = "https://github.com/tommyngx/OAcheck/releases/download/PhenoOAv0.1.0beta/PhenoOA-AI-0.1.0-beta.0-internal-arm64.dmg";
+    setDownloadState("complete");
   };
 
   const resetDownload = () => {
     setDownloadState("idle");
-    setProgress(0);
   };
 
   return (
@@ -107,34 +101,12 @@ export default function DownloadView() {
             <div className="mt-8">
               {downloadState === "idle" && (
                 <button
-                  onClick={startDownload}
+                  onClick={handleDownloadClick}
                   className="w-full flex items-center justify-center gap-2 rounded-xl bg-button-primary-bg text-button-primary-text hover:bg-brand-glow p-3.5 text-xs font-semibold uppercase tracking-wider transition-all duration-200 cursor-pointer shadow-md"
                 >
                   <Download className="h-4 w-4" />
                   <span>Download macOS Installer</span>
                 </button>
-              )}
-
-              {downloadState === "preparing" && (
-                <div className="w-full bg-bg-panel-strong border border-border-panel rounded-xl p-3 text-center space-y-1.5 animate-pulse">
-                  <p className="font-mono text-[10.5px] font-bold text-brand-glow uppercase tracking-wider">Preparing Package...</p>
-                  <p className="font-sans text-[11px] text-text-muted font-light">Synthesizing standalone binaries</p>
-                </div>
-              )}
-
-              {downloadState === "progress" && (
-                <div className="w-full bg-bg-panel-strong border border-border-panel rounded-xl p-4.5 space-y-3">
-                  <div className="flex items-center justify-between font-mono text-[10.5px]">
-                    <span className="text-text-secondary">Downloading...</span>
-                    <span className="text-brand-glow font-bold">{progress}%</span>
-                  </div>
-                  <div className="w-full h-1.5 bg-border-panel rounded-full overflow-hidden">
-                    <div 
-                      className="h-full bg-brand-glow rounded-full transition-all duration-150"
-                      style={{ width: `${progress}%` }}
-                    />
-                  </div>
-                </div>
               )}
 
               {downloadState === "complete" && (
@@ -255,6 +227,81 @@ export default function DownloadView() {
           </div>
         </div>
       </section>
+
+      {/* Access Code Modal */}
+      {showCodeModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center px-4">
+          {/* Backdrop */}
+          <div 
+            className="absolute inset-0 bg-bg-main/80 backdrop-blur-sm cursor-default" 
+            onClick={() => setShowCodeModal(false)}
+          />
+          
+          {/* Modal Container */}
+          <div className="bg-bg-panel border border-brand-glow/30 shadow-[0_0_50px_rgba(45,212,191,0.15)] rounded-2xl w-full max-w-md p-6 relative z-10 animate-in fade-in zoom-in-95 duration-200 text-left">
+            <button 
+              onClick={() => setShowCodeModal(false)}
+              className="absolute top-4 right-4 text-text-muted hover:text-text-primary transition-colors cursor-pointer"
+            >
+              <X className="h-4 w-4" />
+            </button>
+
+            <div className="space-y-4">
+              <div className="flex items-center gap-3">
+                <div className="h-10 w-10 rounded-full bg-brand-electric/10 border border-brand-electric/20 flex items-center justify-center">
+                  <Lock className="h-5 w-5 text-brand-glow" />
+                </div>
+                <div>
+                  <h3 className="font-display text-lg font-bold text-text-primary">Access Code Required</h3>
+                  <p className="font-sans text-[11px] text-text-muted">Enter verification credentials to download</p>
+                </div>
+              </div>
+
+              <div className="h-[1px] w-full bg-border-panel" />
+
+              <div className="space-y-2">
+                <label className="block font-mono text-[10px] uppercase tracking-wider text-text-secondary">
+                  Download Passcode
+                </label>
+                <input
+                  type="password"
+                  value={inputCode}
+                  onChange={(e) => {
+                    setInputCode(e.target.value);
+                    setErrorMessage("");
+                  }}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") handleVerify();
+                  }}
+                  placeholder="••••••••"
+                  autoFocus
+                  className="w-full px-4 py-3 bg-bg-panel-strong border border-border-panel focus:border-brand-glow focus:outline-none rounded-xl text-xs font-mono tracking-widest text-text-primary transition-all placeholder:text-text-muted/40 animate-none"
+                />
+                {errorMessage && (
+                  <p className="text-[10px] text-rose-400 font-mono mt-1 animate-in fade-in duration-200">
+                    {errorMessage}
+                  </p>
+                )}
+              </div>
+
+              <div className="flex gap-3 pt-2">
+                <button
+                  onClick={() => setShowCodeModal(false)}
+                  className="flex-1 py-3 px-4 rounded-xl bg-transparent border border-border-panel text-text-secondary hover:text-text-primary hover:bg-bg-panel-strong transition-all text-xs font-semibold uppercase tracking-wider cursor-pointer"
+                >
+                  Cancel
+                </button>
+                <button
+                  onClick={handleVerify}
+                  className="flex-1 py-3 px-4 rounded-xl bg-button-primary-bg text-button-primary-text hover:bg-brand-glow transition-all text-xs font-semibold uppercase tracking-wider cursor-pointer shadow-md"
+                >
+                  Verify
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
     </div>
   );

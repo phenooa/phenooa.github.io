@@ -11,7 +11,7 @@ export default function Footer({ onNavigate }: FooterProps) {
       <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-[10.5px]">
         {/* Left Side: Short Copyright */}
         <span className="text-center sm:text-left">
-          © 2026 PhenoOA AI Software Projects. All rights reserved.
+          © 2026 PhenoOA Studio. All rights reserved.
         </span>
 
         {/* Right Side: Back to top */}
