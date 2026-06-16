@@ -39,7 +39,7 @@ export const REGION_LABELS: Record<string, string> = {
 };
 
 // ──────────────────────────────────────────────
-// 128-Point Landmark Model
+// 129-Point Landmark Model
 // Placed on a ~400×500 SVG canvas (AP knee view)
 // Femur outline: 0 = top-right shaft, clockwise around condyles, 44 = top-left shaft
 // Tibia: 45–95 = plateau surface, 96–119 = fibula, 120–128 = patella

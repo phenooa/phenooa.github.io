@@ -491,7 +491,7 @@ export default function KneeAtlasExplorer() {
               : "text-text-muted hover:text-text-secondary"
           }`}
         >
-          128-Point Landmark Atlas
+          129-Point Landmark Atlas
         </button>
         <button
           onClick={() => setActiveTab("osteophytes")}

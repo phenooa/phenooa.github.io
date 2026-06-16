@@ -90,8 +90,8 @@ export const FEATURE_GRID_ITEMS: FeatureCard[] = [
     badge: "Automation"
   },
   {
-    title: "128-Point High-Fidelity Landmark Mapping",
-    description: "Fits a standardized 128-point coordinate map tracing the anatomical boundaries of the femur, tibia plateau, fibula head, and patella contours.",
+    title: "129-Point High-Fidelity Landmark Mapping",
+    description: "Fits a standardized 129-point coordinate map tracing the anatomical boundaries of the femur, tibia plateau, fibula head, and patella contours.",
     badge: "Geometry"
   },
   {

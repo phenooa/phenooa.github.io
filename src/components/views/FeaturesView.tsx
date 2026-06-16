@@ -6,7 +6,7 @@ export default function FeaturesView() {
   const steps = [
     { num: "01", name: "Ingestion", desc: "DICOM image ingestion" },
     { num: "02", name: "Localization", desc: "Joint space cropping" },
-    { num: "03", name: "Landmarks", desc: "128-point localization" },
+    { num: "03", name: "Landmarks", desc: "129-point localization" },
     { num: "04", name: "Segmentation", desc: "Osteophyte profiling" },
     { num: "05", name: "Phenotype", desc: "Phenotype prediction" },
     { num: "06", name: "Review", desc: "Interactive review" }

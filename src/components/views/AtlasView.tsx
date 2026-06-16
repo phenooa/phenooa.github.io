@@ -48,7 +48,7 @@ export default function AtlasView() {
               The Osteophyte Atlas is an interactive anatomical reference designed to help clinicians, researchers, and students understand the location and morphology of osteophytes on knee radiographs.
             </p>
             <p className="font-sans text-sm text-text-secondary leading-relaxed font-light">
-              The atlas combines a detailed <strong className="text-text-primary font-medium">128-point knee landmark model</strong> with AI-based osteophyte segmentation to provide a consistent and interpretable framework for evaluating structural osteoarthritis (OA).
+              The atlas combines a detailed <strong className="text-text-primary font-medium">129-point knee landmark model</strong> with AI-based osteophyte segmentation to provide a consistent and interpretable framework for evaluating structural osteoarthritis (OA).
             </p>
             <p className="font-sans text-sm text-text-secondary leading-relaxed font-light">
               Unlike traditional grading systems that describe osteophytes using qualitative terms such as "small", "moderate", or "large", the Osteophyte Atlas links every osteophyte to specific anatomical regions of the knee, allowing users to understand exactly where bony outgrowths occur and how they relate to surrounding structures.
@@ -121,7 +121,7 @@ export default function AtlasView() {
       </section>
 
       {/* ═══════════════════════════════════════════════
-          128-POINT LANDMARK MODEL
+          129-POINT LANDMARK MODEL
       ═══════════════════════════════════════════════ */}
       <section className="px-6 md:px-16 pb-16 max-w-5xl mx-auto relative z-10">
         <div className="space-y-6">
@@ -129,11 +129,11 @@ export default function AtlasView() {
             <div className="h-9 w-9 rounded-xl bg-brand-electric/10 border border-brand-electric/20 flex items-center justify-center">
               <Layers className="h-4.5 w-4.5 text-brand-glow" />
             </div>
-            <h2 className="font-display text-2xl font-light text-text-primary tracking-tight">The 128-Point Knee Landmark Model</h2>
+            <h2 className="font-display text-2xl font-light text-text-primary tracking-tight">The 129-Point Knee Landmark Model</h2>
           </div>
 
           <p className="font-sans text-sm text-text-secondary leading-relaxed font-light max-w-3xl">
-            The atlas is built upon a 128-point anatomical landmark model that captures the shape of the major knee structures visible on an anteroposterior knee radiograph.
+            The atlas is built upon a 129-point anatomical landmark model that captures the shape of the major knee structures visible on an anteroposterior knee radiograph.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -222,7 +222,7 @@ export default function AtlasView() {
 
           <div className="bg-bg-panel border border-border-panel rounded-2xl p-6 md:p-8 space-y-4">
             <p className="font-sans text-sm text-text-secondary leading-relaxed font-light">
-              The 128 landmark points are used to describe the <strong className="text-text-primary font-medium">normal anatomical shape</strong> of the knee.
+              The 129 landmark points are used to describe the <strong className="text-text-primary font-medium">normal anatomical shape</strong> of the knee.
             </p>
             <p className="font-sans text-sm text-text-primary leading-relaxed font-medium">
               Osteophytes, however, are not represented using landmark points.
@@ -266,7 +266,7 @@ export default function AtlasView() {
 
           <div className="bg-bg-panel border border-border-panel rounded-2xl p-6 md:p-8 space-y-6">
             <p className="font-sans text-sm text-text-secondary leading-relaxed font-light">
-              Rather than presenting a static geometry, the 128 landmark coordinate framework serves as a dynamic system. The <strong className="text-text-primary font-medium">relative spatial configuration</strong> of these landmarks is mathematically evaluated to define localized joint characteristics and overall knee osteoarthritis phenotypes.
+              Rather than presenting a static geometry, the 129 landmark coordinate framework serves as a dynamic system. The <strong className="text-text-primary font-medium">relative spatial configuration</strong> of these landmarks is mathematically evaluated to define localized joint characteristics and overall knee osteoarthritis phenotypes.
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
