@@ -15,6 +15,7 @@ export default function Header({ currentRoute, onNavigate }: HeaderProps) {
     { label: "Features", route: "/features" },
     { label: "About", route: "/about" },
     { label: "Demo", route: "/demo" },
+    { label: "Atlas", route: "/atlas" },
   ];
 
   const handleItemClick = (route: string) => {

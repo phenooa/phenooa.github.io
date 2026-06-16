@@ -165,8 +165,8 @@ export default function HomeView({ onNavigate }: HomeViewProps) {
                     <div className="absolute inset-1 border border-dashed border-brand-glow opacity-60 rounded" />
                   </div>
                   <div className="text-left">
-                    <p className="text-xs font-mono text-text-primary font-bold">Preprocessed Standard Joint</p>
-                    <p className="text-[10px] text-brand-glow font-mono">Auto crop joint spacing: 100%</p>
+                    <p className="text-xs font-mono text-text-primary font-bold">Detect knee shape</p>
+                    <p className="text-[10px] text-brand-glow font-mono">Detect landmarks & osteophytes</p>
                   </div>
                   <span className="text-[10px] text-brand-glow ml-auto font-mono">24ms</span>
                 </div>
@@ -185,7 +185,7 @@ export default function HomeView({ onNavigate }: HomeViewProps) {
                   <div className="space-y-1.5 pt-1">
                     <div className="space-y-1">
                       <div className="flex justify-between text-[10px] font-mono text-text-secondary">
-                        <span>Severe Medial Narrowing</span>
+                        <span>Global Atrophy</span>
                         <span>88%</span>
                       </div>
                       <div className="h-1 bg-bg-panel-strong rounded-full overflow-hidden">
@@ -194,7 +194,7 @@ export default function HomeView({ onNavigate }: HomeViewProps) {
                     </div>
                     <div className="space-y-1">
                       <div className="flex justify-between text-[10px] font-mono text-text-secondary">
-                        <span>Hypertrophic Osteophytes</span>
+                        <span>Knee Hypertrophic</span>
                         <span>79%</span>
                       </div>
                       <div className="h-1 bg-bg-panel-strong rounded-full overflow-hidden">

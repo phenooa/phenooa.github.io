@@ -22,8 +22,8 @@ export default function ThemeSwitcher({ currentTheme, onChangeTheme }: ThemeSwit
       id: "clinical-light", 
       name: "Clinical Light", 
       desc: "Clean & professional medical theme",
-      colorCircle: "bg-[#0F766E] border border-[#14B8A6]/30",
-      accent: "#0F766E" 
+      colorCircle: "bg-[#2563EB] border border-[#06B6D4]/30",
+      accent: "#2563EB" 
     },
     { 
       id: "dark-teal", 

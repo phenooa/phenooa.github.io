@@ -36,6 +36,22 @@ export default function ResearchView() {
         <div className="h-[1px] w-full bg-border-panel pt-4" />
       </section>
 
+      {/* Figure 1: Large Prominent View */}
+      <section className="px-6 md:px-16 pb-12 max-w-7xl mx-auto relative z-10">
+        <div className="rounded-2xl overflow-hidden border border-border-panel bg-bg-panel p-4 md:p-6 flex flex-col items-center justify-center">
+          <div className="w-full">
+            <p className="font-mono text-[10px] md:text-xs text-text-muted mb-4 text-center uppercase tracking-[0.15em] font-bold">
+              Figure 1: Osteoarthritis Phenotypic Structure Mapping
+            </p>
+            <img 
+              src={ASSETS.images.phenotypeStructure} 
+              alt="OA Phenotype Structure" 
+              className="w-full h-auto object-contain rounded-lg filter brightness-95 contrast-105" 
+            />
+          </div>
+        </div>
+      </section>
+
       {/* B. Key research focus cards */}
       <section className="px-6 md:px-16 pb-20 max-w-7xl mx-auto relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
@@ -73,18 +89,6 @@ export default function ResearchView() {
             <h2 className="font-display text-2xl md:text-3xl font-light tracking-tight text-text-primary">
               Scientific foundation & validation
             </h2>
-          </div>
-
-          {/* Phenotyping structure image */}
-          <div className="rounded-2xl overflow-hidden border border-border-panel bg-bg-panel p-4 flex items-center justify-center">
-            <div className="max-w-2xl w-full">
-              <p className="font-mono text-[10px] text-text-muted mb-3 text-center uppercase tracking-wider">Figure 1: Osteoarthritis Phenotypic Structure Mapping</p>
-              <img 
-                src={ASSETS.images.phenotypeStructure} 
-                alt="OA Phenotype Structure" 
-                className="w-full h-auto max-h-[320px] object-contain rounded-lg filter brightness-90 contrast-105" 
-              />
-            </div>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">

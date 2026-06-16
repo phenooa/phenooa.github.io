@@ -1,40 +1,35 @@
 import React, { useState } from "react";
-import { Download, Apple, Monitor, Terminal, CheckCircle2, ShieldCheck, Cpu, Lock, X } from "lucide-react";
+import { Download, Apple, Monitor, Terminal, CheckCircle2, ShieldCheck, Cpu, Lock, Database } from "lucide-react";
 
 export default function DownloadView() {
-  const [downloadState, setDownloadState] = useState<"idle" | "complete">("idle");
-  const [showCodeModal, setShowCodeModal] = useState(false);
-  const [inputCode, setInputCode] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
+  const [downloadStates, setDownloadStates] = useState<Record<"macos" | "samples", "idle" | "complete">>({
+    macos: "idle",
+    samples: "idle"
+  });
 
-  const handleDownloadClick = () => {
-    setShowCodeModal(true);
-    setInputCode("");
-    setErrorMessage("");
-  };
-
-  const handleVerify = () => {
-    if (inputCode === "Ben2026") {
-      setShowCodeModal(false);
-      startDownload();
-    } else {
-      setErrorMessage("Access denied. Invalid code.");
+  const handleDownloadClick = (target: "macos" | "samples") => {
+    if (target === "macos") {
+      window.location.href = "https://github.com/tommyngx/release/releases/download/pheno_v0.1.0/PhenoOA.zip";
+    } else if (target === "samples") {
+      window.location.href = "https://github.com/tommyngx/release/releases/download/pheno_v0.1.0/Samples.zip";
     }
+
+    setDownloadStates((prev) => ({
+      ...prev,
+      [target]: "complete"
+    }));
   };
 
-  const startDownload = () => {
-    // Trigger actual download of the macOS installer DMG immediately to prevent popup blocker / routing issues
-    window.location.href = "https://github.com/tommyngx/OAcheck/releases/download/PhenoOAv0.1.0beta/PhenoOA-AI-0.1.0-beta.0-internal-arm64.dmg";
-    setDownloadState("complete");
-  };
-
-  const resetDownload = () => {
-    setDownloadState("idle");
+  const resetDownload = (target: "macos" | "samples") => {
+    setDownloadStates((prev) => ({
+      ...prev,
+      [target]: "idle"
+    }));
   };
 
   return (
     <div className="w-full text-text-primary bg-gradient-to-b from-bg-main via-bg-surface to-bg-main relative pb-24 min-h-screen font-sans">
-      
+
       {/* Background radial glow */}
       <div className="absolute top-24 left-[10%] w-[350px] h-[350px] bg-brand-electric/10 blur-[130px] pointer-events-none" />
       <div className="absolute bottom-1/4 right-[5%] w-[400px] h-[400px] bg-brand-glow/8 blur-[120px] pointer-events-none" />
@@ -44,7 +39,7 @@ export default function DownloadView() {
         <span className="text-[11px] font-bold tracking-[0.2em] text-brand-glow uppercase block">
           [ Standalone Clinical Workspace ]
         </span>
-        
+
         <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-light tracking-tight text-text-primary leading-tight">
           Download <br />
           <span className="font-serif italic-heavy text-brand-glow">PhenoOA Studio</span>
@@ -58,13 +53,16 @@ export default function DownloadView() {
       </section>
 
       {/* Main Download Grid */}
-      <section className="px-6 md:px-16 pb-20 max-w-7xl mx-auto relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          
+      <section className="px-6 md:px-16 pb-12 max-w-7xl mx-auto relative z-10">
+        <h2 className="font-mono text-xs font-bold tracking-[0.2em] text-brand-glow uppercase mb-6 block text-left">
+          [ Available Downloads ]
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+
           {/* 1. macOS (Universal) [ACTIVE] */}
           <div className="bg-bg-panel border border-brand-glow/30 shadow-[0_0_20px_rgba(45,212,191,0.06)] rounded-2xl p-6.5 hover:border-brand-glow transition-all duration-300 flex flex-col justify-between relative group overflow-hidden">
             <div className="absolute top-0 right-0 w-24 h-24 bg-brand-glow/5 blur-2xl pointer-events-none" />
-            <div className="space-y-6">
+            <div className="space-y-6 text-left">
               {/* Badge & OS Spec */}
               <div className="flex items-center justify-between">
                 <div className="h-10 w-10 rounded-full bg-brand-electric/10 border border-brand-electric/20 flex items-center justify-center">
@@ -78,7 +76,7 @@ export default function DownloadView() {
               {/* Title & Stats */}
               <div>
                 <h3 className="font-display text-lg font-bold text-text-primary">macOS Desktop Client</h3>
-                <p className="font-mono text-[10.5px] text-brand-glow uppercase mt-1 tracking-wider">v0.1.0-beta.0 • macOS Apple Silicon</p>
+                <p className="font-mono text-[10.5px] text-brand-glow uppercase mt-1 tracking-wider">v0.1.0-beta • macOS Apple Silicon</p>
                 <p className="font-sans text-xs text-text-muted mt-2 font-light leading-relaxed">
                   Optimized for Apple Silicon (M1/M2/M3/M4) devices running macOS. Built natively to accelerate automated deep learning segmentation and phenotyping pipelines off-grid.
                 </p>
@@ -99,9 +97,9 @@ export default function DownloadView() {
 
             {/* Premium Download Buttons & States */}
             <div className="mt-8">
-              {downloadState === "idle" && (
+              {downloadStates.macos === "idle" && (
                 <button
-                  onClick={handleDownloadClick}
+                  onClick={() => handleDownloadClick("macos")}
                   className="w-full flex items-center justify-center gap-2 rounded-xl bg-button-primary-bg text-button-primary-text hover:bg-brand-glow p-3.5 text-xs font-semibold uppercase tracking-wider transition-all duration-200 cursor-pointer shadow-md"
                 >
                   <Download className="h-4 w-4" />
@@ -109,14 +107,14 @@ export default function DownloadView() {
                 </button>
               )}
 
-              {downloadState === "complete" && (
+              {downloadStates.macos === "complete" && (
                 <div className="w-full space-y-3">
                   <div className="flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/25 p-3 rounded-xl">
                     <CheckCircle2 className="h-4 w-4 text-emerald-400 shrink-0" />
                     <span className="font-sans text-xs text-emerald-400 font-medium">Download initialized!</span>
                   </div>
-                  <button 
-                    onClick={resetDownload}
+                  <button
+                    onClick={() => resetDownload("macos")}
                     className="w-full text-center font-mono text-[10px] text-brand-glow hover:underline cursor-pointer uppercase tracking-wider"
                   >
                     Reset & Download Again
@@ -126,7 +124,81 @@ export default function DownloadView() {
             </div>
           </div>
 
-          {/* 2. Windows x64 [DISABLED / BLURRED] */}
+          {/* 2. Clinical Sample Data [ACTIVE] */}
+          <div className="bg-bg-panel border border-brand-glow/30 shadow-[0_0_20px_rgba(45,212,191,0.06)] rounded-2xl p-6.5 hover:border-brand-glow transition-all duration-300 flex flex-col justify-between relative group overflow-hidden">
+            <div className="absolute top-0 right-0 w-24 h-24 bg-brand-glow/5 blur-2xl pointer-events-none" />
+            <div className="space-y-6 text-left">
+              {/* Badge & OS Spec */}
+              <div className="flex items-center justify-between">
+                <div className="h-10 w-10 rounded-full bg-brand-electric/10 border border-brand-electric/20 flex items-center justify-center">
+                  <Database className="h-5 w-5 text-brand-glow" />
+                </div>
+                <span className="bg-brand-electric/10 border border-brand-glow/20 text-brand-glow font-mono text-[9px] uppercase tracking-widest px-2.5 py-1 rounded-full font-bold">
+                  Dataset
+                </span>
+              </div>
+
+              {/* Title & Stats */}
+              <div>
+                <h3 className="font-display text-lg font-bold text-text-primary">Clinical Sample Data</h3>
+                <p className="font-mono text-[10.5px] text-brand-glow uppercase mt-1 tracking-wider">v0.1.0-beta • ZIP Archive</p>
+                <p className="font-sans text-xs text-text-muted mt-2 font-light leading-relaxed">
+                  Contains anonymized osteoarthritic knee sequences. Provided to verify workspace diagnostic layers, test automated segmentation, and validate local inference results.
+                </p>
+              </div>
+
+              {/* Details and security tags */}
+              <div className="border-t border-border-panel pt-4 space-y-2">
+                <div className="flex items-center gap-2 font-mono text-[10px] text-text-muted">
+                  <Lock className="h-3.5 w-3.5 text-brand-glow" />
+                  <span>Format: Password Protected ZIP Archive</span>
+                </div>
+                <div className="flex items-center gap-2 font-mono text-[10px] text-text-muted">
+                  <ShieldCheck className="h-3.5 w-3.5 text-brand-glow" />
+                  <span>Anonymized Patient Identifiers (HIPAA compliant)</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Premium Download Buttons & States */}
+            <div className="mt-8">
+              {downloadStates.samples === "idle" && (
+                <button
+                  onClick={() => handleDownloadClick("samples")}
+                  className="w-full flex items-center justify-center gap-2 rounded-xl bg-button-primary-bg text-button-primary-text hover:bg-brand-glow p-3.5 text-xs font-semibold uppercase tracking-wider transition-all duration-200 cursor-pointer shadow-md"
+                >
+                  <Download className="h-4 w-4" />
+                  <span>Download Sample Dataset</span>
+                </button>
+              )}
+
+              {downloadStates.samples === "complete" && (
+                <div className="w-full space-y-3">
+                  <div className="flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/25 p-3 rounded-xl">
+                    <CheckCircle2 className="h-4 w-4 text-emerald-400 shrink-0" />
+                    <span className="font-sans text-xs text-emerald-400 font-medium">Download initialized!</span>
+                  </div>
+                  <button
+                    onClick={() => resetDownload("samples")}
+                    className="w-full text-center font-mono text-[10px] text-brand-glow hover:underline cursor-pointer uppercase tracking-wider"
+                  >
+                    Reset & Download Again
+                  </button>
+                </div>
+              )}
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      {/* Upcoming Platforms */}
+      <section className="px-6 md:px-16 pb-20 max-w-7xl mx-auto relative z-10">
+        <h2 className="font-mono text-xs font-bold tracking-[0.2em] text-text-muted uppercase mb-6 block text-left">
+          [ Upcoming Platforms ]
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {/* Windows x64 [DISABLED / BLURRED] */}
           <div className="bg-bg-panel/40 border border-border-panel rounded-2xl p-6.5 flex flex-col justify-between relative overflow-hidden text-left opacity-65 group">
             <div className="space-y-6">
               <div className="flex items-center justify-between">
@@ -168,7 +240,7 @@ export default function DownloadView() {
             </div>
           </div>
 
-          {/* 3. Linux x64 [DISABLED / BLURRED] */}
+          {/* Linux x64 [DISABLED / BLURRED] */}
           <div className="bg-bg-panel/40 border border-border-panel rounded-2xl p-6.5 flex flex-col justify-between relative overflow-hidden text-left opacity-65 group">
             <div className="space-y-6">
               <div className="flex items-center justify-between">
@@ -209,7 +281,6 @@ export default function DownloadView() {
               </button>
             </div>
           </div>
-
         </div>
       </section>
 
@@ -228,80 +299,7 @@ export default function DownloadView() {
         </div>
       </section>
 
-      {/* Access Code Modal */}
-      {showCodeModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center px-4">
-          {/* Backdrop */}
-          <div 
-            className="absolute inset-0 bg-bg-main/80 backdrop-blur-sm cursor-default" 
-            onClick={() => setShowCodeModal(false)}
-          />
-          
-          {/* Modal Container */}
-          <div className="bg-bg-panel border border-brand-glow/30 shadow-[0_0_50px_rgba(45,212,191,0.15)] rounded-2xl w-full max-w-md p-6 relative z-10 animate-in fade-in zoom-in-95 duration-200 text-left">
-            <button 
-              onClick={() => setShowCodeModal(false)}
-              className="absolute top-4 right-4 text-text-muted hover:text-text-primary transition-colors cursor-pointer"
-            >
-              <X className="h-4 w-4" />
-            </button>
 
-            <div className="space-y-4">
-              <div className="flex items-center gap-3">
-                <div className="h-10 w-10 rounded-full bg-brand-electric/10 border border-brand-electric/20 flex items-center justify-center">
-                  <Lock className="h-5 w-5 text-brand-glow" />
-                </div>
-                <div>
-                  <h3 className="font-display text-lg font-bold text-text-primary">Access Code Required</h3>
-                  <p className="font-sans text-[11px] text-text-muted">Enter verification credentials to download</p>
-                </div>
-              </div>
-
-              <div className="h-[1px] w-full bg-border-panel" />
-
-              <div className="space-y-2">
-                <label className="block font-mono text-[10px] uppercase tracking-wider text-text-secondary">
-                  Download Passcode
-                </label>
-                <input
-                  type="password"
-                  value={inputCode}
-                  onChange={(e) => {
-                    setInputCode(e.target.value);
-                    setErrorMessage("");
-                  }}
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter") handleVerify();
-                  }}
-                  placeholder="••••••••"
-                  autoFocus
-                  className="w-full px-4 py-3 bg-bg-panel-strong border border-border-panel focus:border-brand-glow focus:outline-none rounded-xl text-xs font-mono tracking-widest text-text-primary transition-all placeholder:text-text-muted/40 animate-none"
-                />
-                {errorMessage && (
-                  <p className="text-[10px] text-rose-400 font-mono mt-1 animate-in fade-in duration-200">
-                    {errorMessage}
-                  </p>
-                )}
-              </div>
-
-              <div className="flex gap-3 pt-2">
-                <button
-                  onClick={() => setShowCodeModal(false)}
-                  className="flex-1 py-3 px-4 rounded-xl bg-transparent border border-border-panel text-text-secondary hover:text-text-primary hover:bg-bg-panel-strong transition-all text-xs font-semibold uppercase tracking-wider cursor-pointer"
-                >
-                  Cancel
-                </button>
-                <button
-                  onClick={handleVerify}
-                  className="flex-1 py-3 px-4 rounded-xl bg-button-primary-bg text-button-primary-text hover:bg-brand-glow transition-all text-xs font-semibold uppercase tracking-wider cursor-pointer shadow-md"
-                >
-                  Verify
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
 
     </div>
   );

@@ -80,34 +80,34 @@ export const RESEARCH_CARDS: ScienceCard[] = [
 
 export const FEATURE_GRID_ITEMS: FeatureCard[] = [
   {
-    title: "DICOM & Image Import",
-    description: "Supports automatic metadata parsing for lossless standard clinical DICOM slices, plus standard PNG, JPG, and JPEG radiographs.",
+    title: "Standardized DICOM & Multi-Format Ingestion",
+    description: "Automatically parses metadata, tags, and pixel spacings from standardized clinical DICOM files as well as standard PNG, JPG, and JPEG radiographs.",
     badge: "Input"
   },
   {
-    title: "Knee Detection & Cropping",
-    description: "Built-in anchor model locates precise bounding dimensions for tibia, femur, and joint space coordinates without manual annotations.",
+    title: "Intelligent Joint Detection & Precise RoI Localization",
+    description: "Employs object detection anchors to locate the knee joint space and automatically crops target regions to prepare radiography vectors for analysis.",
     badge: "Automation"
   },
   {
-    title: "Image Normalization",
-    description: "Aligns radiographic brightness distributions and pixel sizes dynamically to standardize visual evaluations.",
-    badge: "Quality"
+    title: "128-Point High-Fidelity Landmark Mapping",
+    description: "Fits a standardized 128-point coordinate map tracing the anatomical boundaries of the femur, tibia plateau, fibula head, and patella contours.",
+    badge: "Geometry"
   },
   {
-    title: "Phenotype Prediction",
-    description: "Extracts deep latent parameters to deliver probabilities, class confidence flags, and statistical model uncertainties.",
+    title: "Deep-Learning Osteophyte Contour Segmentation",
+    description: "Delivers pixel-level segmentations of marginal osteophytes on the femur condyles and tibia plateau to characterize marginal bone growth.",
+    badge: "Segmentation"
+  },
+  {
+    title: "Multi-Compartmental Phenotypic Subgroup Prediction",
+    description: "Translates anatomical features into clinical phenotype probabilities, classifying subjects into clear structural subgroups like medial/lateral narrowing.",
     badge: "Inference"
   },
   {
-    title: "Batch Processing Streams",
-    description: "Process massive cohort directories containing thousands of subjects in parallel with high-velocity desktop performance.",
-    badge: "Scale"
-  },
-  {
-    title: "Rich Research Exports",
-    description: "Generate structured tabular CSV/JSON databases, annotated inspection images, and customized PDF summary reports.",
-    badge: "Output"
+    title: "Interactive Diagnostics & Clinical Review Suite",
+    description: "Enables clinicians and researchers to inspect individual subjects, verify landmark coordinates, review model confidences, and export structured databases.",
+    badge: "Verification"
   }
 ];
 

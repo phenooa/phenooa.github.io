@@ -7,6 +7,7 @@ import FeaturesView from "./components/views/FeaturesView";
 import AboutView from "./components/views/AboutView";
 import DownloadView from "./components/views/DownloadView";
 import DemoView from "./components/views/DemoView";
+import AtlasView from "./components/views/AtlasView";
 import ThemeSwitcher from "./components/shared/ThemeSwitcher";
 
 export default function App() {
@@ -17,6 +18,7 @@ export default function App() {
     if (hash === "#/about" || hash === "#about") return "/about";
     if (hash === "#/download" || hash === "#download") return "/download";
     if (hash === "#/demo" || hash === "#demo") return "/demo";
+    if (hash === "#/atlas" || hash === "#atlas") return "/atlas";
     return "/";
   });
 
@@ -33,6 +35,7 @@ export default function App() {
       else if (hash === "#/about" || hash === "#about") computedRoute = "/about";
       else if (hash === "#/download" || hash === "#download") computedRoute = "/download";
       else if (hash === "#/demo" || hash === "#demo") computedRoute = "/demo";
+      else if (hash === "#/atlas" || hash === "#atlas") computedRoute = "/atlas";
       
       setCurrentRoute(computedRoute);
       window.scrollTo({ top: 0, behavior: "instant" as any });
@@ -75,6 +78,7 @@ export default function App() {
         {currentRoute === "/about" && <AboutView />}
         {currentRoute === "/download" && <DownloadView />}
         {currentRoute === "/demo" && <DemoView onNavigate={handleNavigate} />}
+        {currentRoute === "/atlas" && <AtlasView />}
       </main>
 
       {/* Consolidated Footer */}

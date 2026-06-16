@@ -4,12 +4,12 @@ import { ArrowRight, FolderDown, ScanLine, Sun, Heart, Cpu, FileSpreadsheet } fr
 
 export default function FeaturesView() {
   const steps = [
-    { num: "01", name: "Import", desc: "DICOM slice parser" },
-    { num: "02", name: "Preprocess", desc: "Intensity equalization" },
-    { num: "03", name: "Detect", desc: "Auto femur/tibia localization" },
-    { num: "04", name: "Predict", desc: "Phenotype probabilities vector" },
-    { num: "05", name: "Review", desc: "Statistical confidence review" },
-    { num: "06", name: "Export", desc: "Structured CSV & images ready" }
+    { num: "01", name: "Ingestion", desc: "DICOM image ingestion" },
+    { num: "02", name: "Localization", desc: "Joint space cropping" },
+    { num: "03", name: "Landmarks", desc: "128-point localization" },
+    { num: "04", name: "Segmentation", desc: "Osteophyte profiling" },
+    { num: "05", name: "Phenotype", desc: "Phenotype prediction" },
+    { num: "06", name: "Review", desc: "Interactive review" }
   ];
 
   const iconsList = [
@@ -98,7 +98,12 @@ export default function FeaturesView() {
                 </div>
                 <div>
                   <h4 className="text-xs font-mono font-bold text-text-primary uppercase tracking-wider">{s.name}</h4>
-                  <p className="text-[10px] text-text-muted leading-snug font-sans font-light mt-1">{s.desc}</p>
+                  <p 
+                    className="text-[9.5px] text-text-muted leading-snug font-sans font-light mt-1 whitespace-nowrap overflow-hidden text-ellipsis"
+                    title={s.desc}
+                  >
+                    {s.desc}
+                  </p>
                 </div>
               </div>
             ))}
