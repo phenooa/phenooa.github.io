@@ -10,11 +10,11 @@ The project follows a modular, role-based directory structure inside `src/`. All
 
 ```text
 /src
-├── App.tsx                        # Main App container & Hash router mount
+├── App.tsx                        # Main App container & Hash router mount (config-driven)
 ├── main.tsx                       # Framework entry point
-├── types.ts                       # Common TypeScript domain types
+├── types.ts                       # Common TypeScript domain types (consolidated)
 ├── constants.ts                   # Clinical standards, phenotypes, and datasets constants
-├── data.ts                        # Curated scientific texts, research outputs, and feature lists
+├── data.ts                        # Curated scientific texts, research outputs, and feature lists (pure constants)
 ├── index.css                      # Tailwind imports & Custom multi-theme token declarations
 └── components/
     ├── shared/                    # Layout and global shared modules
@@ -25,13 +25,14 @@ The project follows a modular, role-based directory structure inside `src/`. All
     │   ├── UI.tsx                 # Micro-animation primitives (e.g. CountUp, Custom cards)
     │   └── assets.ts              # CDN/GitHub hosted image references and clinical publications
     │
-    ├── views/                     # Top-level standalone full-screen page content
-    │   ├── HomeView.tsx           # Product landing, core values, search-simulation portal
-    │   ├── ResearchView.tsx       # Peer-reviewed references, cohort statistics, scientific methods
-    │   ├── FeaturesView.tsx       # Multimodal toolchain walkthrough and pipeline steps
-    │   ├── AboutView.tsx          # Leading clinical investigators and consortium placeholder
-    │   ├── DownloadView.tsx       # Cross-platform client download layout (with simulated mac download)
-    │   └── DemoView.tsx           # Multi-modal clinical workbench stage
+    ├── views/                     # Top-level standalone full-screen page content (folder-per-page)
+    │   ├── home/                  # Landing page modules (HeroSection, ValueSection, ProductHighlight, CtaSection)
+    │   ├── research/              # Scientific publications & clinical references modules
+    │   ├── features/              # Toolchain pipeline and feature grid modules
+    │   ├── about/                 # consortium milestones & lead investigator team modules
+    │   ├── download/              # macOS installer & system requirements spec grid modules
+    │   ├── demo/                  # clinical workbench demo stage components
+    │   └── atlas/                 # Interactive knee atlas explorer components
     │
     └── workspace/                 # Sandbox features specific to the Live clinical workbench
         ├── ImageViewer.tsx        # High-resolution canvas with togglable segmented overlay nodes

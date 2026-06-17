@@ -15,10 +15,9 @@ export default function OALogo({ className = "", size = 38 }: OALogoProps) {
       }}
     >
       <img
-        src="https://raw.githubusercontent.com/tommyngx/img/refs/heads/main/OApheno/PhenoOA_logo.png"
+        src="/assets/logo.png"
         alt="PhenoOA Logo"
         className="w-full h-full object-contain"
-        referrerPolicy="no-referrer"
       />
     </div>
   );

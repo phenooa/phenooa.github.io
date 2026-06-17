@@ -33,6 +33,7 @@ Never bundle multiple unrelated layouts into a single file. Large source files r
 Always double-check safety using our localized verification suite:
 - Run `npm run lint` regularly to inspect for type mismatches, missing handlers, or orphaned imports.
 - Validate production build capability by executing `npm run build`.
+- For automated workflow guidelines, check [AGENTS.md](./AGENTS.md).
 
 ### B. Adding Environment Variables safely
 If third-party clinical or deep analytics model backends are connected in the future:

@@ -1,36 +1,15 @@
-export interface AccordionItem {
-  id: string;
-  title: string;
-  content: string;
-}
+import type {
+  ValueCard,
+  ScienceCard,
+  FeatureCard,
+  DownloadOption,
+  HighlightBadge,
+  DemoSubject,
+} from './types';
 
-export interface ValueCard {
-  title: string;
-  description: string;
-  iconName: string;
-}
-
-export interface FeatureCard {
-  title: string;
-  description: string;
-  badge: string;
-}
-
-export interface ScienceCard {
-  title: string;
-  description: string;
-  tag: string;
-}
-
-export interface DownloadOption {
-  os: string;
-  subtitle: string;
-  pkgType: string;
-  btnText: string;
-  filename: string;
-  size: string;
-  version: string;
-}
+// ──────────────────────────────────────────────
+// Homepage Data
+// ──────────────────────────────────────────────
 
 export const VALUE_CARDS: ValueCard[] = [
   {
@@ -50,10 +29,14 @@ export const VALUE_CARDS: ValueCard[] = [
   }
 ];
 
-export const HIGHLIGHT_BADGES = [
+export const HIGHLIGHT_BADGES: HighlightBadge[] = [
   { os: "macOS", subtitle: "For Apple Silicon and Intel Macs", suffix: ".dmg", size: "182 MB" },
   { os: "Windows", subtitle: "For Windows 10 and 11 64-bit", suffix: ".exe", size: "210 MB" }
 ];
+
+// ──────────────────────────────────────────────
+// Research Page Data
+// ──────────────────────────────────────────────
 
 export const RESEARCH_CARDS: ScienceCard[] = [
   {
@@ -77,6 +60,10 @@ export const RESEARCH_CARDS: ScienceCard[] = [
     description: "By deploying standardized DICOM normalizations and deterministic crop ratios, we guarantee repeatable research outputs across diverse scanner manufacturers."
   }
 ];
+
+// ──────────────────────────────────────────────
+// Features Page Data
+// ──────────────────────────────────────────────
 
 export const FEATURE_GRID_ITEMS: FeatureCard[] = [
   {
@@ -111,6 +98,10 @@ export const FEATURE_GRID_ITEMS: FeatureCard[] = [
   }
 ];
 
+// ──────────────────────────────────────────────
+// Download Page Data
+// ──────────────────────────────────────────────
+
 export const DOWNLOAD_OPTIONS: DownloadOption[] = [
   {
     os: "macOS",
@@ -141,18 +132,9 @@ export const DOWNLOAD_OPTIONS: DownloadOption[] = [
   }
 ];
 
-export interface DemoSubject {
-  id: string;
-  age: number;
-  gender: string;
-  klGrade: number;
-  assignedPhenotype: string;
-  confidence: number;
-  lowConfidence: boolean;
-  notes: string;
-  probabilities: { name: string; value: number }[];
-  visualPoints: { x: number; y: number; label: string }[];
-}
+// ──────────────────────────────────────────────
+// Demo Page Sample Data
+// ──────────────────────────────────────────────
 
 export const SAMPLE_SUBJECTS: DemoSubject[] = [
   {

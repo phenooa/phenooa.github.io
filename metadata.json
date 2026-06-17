@@ -1,6 +1,0 @@
-{
-  "name": "PhenoOA AI",
-  "description": "A premium, minimalist, and futuristic AI landing page for PhenoOA AI and PhenoOA Studio, transforming knee radiographs into reproducible structural phenotypes.",
-  "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
-}

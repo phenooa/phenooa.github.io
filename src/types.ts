@@ -1,36 +1,6 @@
-export interface BenchmarkBar {
-  name: string;
-  value: number;
-}
-
-export interface BenchmarkGroup {
-  id: string;
-  title: string;
-  subtitle: string;
-  description: string;
-  bars: BenchmarkBar[];
-}
-
-export interface AccordionItem {
-  id: string;
-  title: string;
-  content: string;
-}
-
-export interface FeatureItem {
-  title: string;
-  description: string;
-}
-
-export interface ProductItem {
-  id: string;
-  badge: string;
-  title: string;
-  description: string;
-  ctaText: string;
-  gradientFrom: string;
-  gradientTo: string;
-}
+// ──────────────────────────────────────────────
+// Domain types used by workspace components
+// ──────────────────────────────────────────────
 
 export interface Feature {
   name: string;
@@ -46,3 +16,54 @@ export interface Phenotype {
 
 export type TabType = 'images' | 'analysis' | 'phenotype' | 'export';
 
+// ──────────────────────────────────────────────
+// Static content data types (used by data.ts)
+// ──────────────────────────────────────────────
+
+export interface ValueCard {
+  title: string;
+  description: string;
+  iconName: string;
+}
+
+export interface ScienceCard {
+  title: string;
+  description: string;
+  tag: string;
+}
+
+export interface FeatureCard {
+  title: string;
+  description: string;
+  badge: string;
+}
+
+export interface DownloadOption {
+  os: string;
+  subtitle: string;
+  pkgType: string;
+  btnText: string;
+  filename: string;
+  size: string;
+  version: string;
+}
+
+export interface HighlightBadge {
+  os: string;
+  subtitle: string;
+  suffix: string;
+  size: string;
+}
+
+export interface DemoSubject {
+  id: string;
+  age: number;
+  gender: string;
+  klGrade: number;
+  assignedPhenotype: string;
+  confidence: number;
+  lowConfidence: boolean;
+  notes: string;
+  probabilities: { name: string; value: number }[];
+  visualPoints: { x: number; y: number; label: string }[];
+}

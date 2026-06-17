@@ -1,25 +1,42 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, lazy, Suspense } from "react";
 import Header from "./components/shared/Header";
 import Footer from "./components/shared/Footer";
-import HomeView from "./components/views/HomeView";
-import ResearchView from "./components/views/ResearchView";
-import FeaturesView from "./components/views/FeaturesView";
-import AboutView from "./components/views/AboutView";
-import DownloadView from "./components/views/DownloadView";
-import DemoView from "./components/views/DemoView";
-import AtlasView from "./components/views/AtlasView";
 import ThemeSwitcher from "./components/shared/ThemeSwitcher";
+
+const HomeView = lazy(() => import("./components/views/home"));
+const ResearchView = lazy(() => import("./components/views/research"));
+const FeaturesView = lazy(() => import("./components/views/features"));
+const AboutView = lazy(() => import("./components/views/about"));
+const DownloadView = lazy(() => import("./components/views/download"));
+const DemoView = lazy(() => import("./components/views/demo"));
+const AtlasView = lazy(() => import("./components/views/atlas"));
+
+interface RouteConfig {
+  path: string;
+  hash: string;
+  component: React.ComponentType<any>;
+}
+
+const ROUTES: RouteConfig[] = [
+  { path: "/", hash: "", component: HomeView },
+  { path: "/research", hash: "research", component: ResearchView },
+  { path: "/features", hash: "features", component: FeaturesView },
+  { path: "/about", hash: "about", component: AboutView },
+  { path: "/download", hash: "download", component: DownloadView },
+  { path: "/demo", hash: "demo", component: DemoView },
+  { path: "/atlas", hash: "atlas", component: AtlasView },
+];
+
+const getRouteFromHash = (hash: string): string => {
+  const normalized = hash.replace(/^#\/?/, "");
+  if (!normalized) return "/";
+  const matched = ROUTES.find(r => r.hash === normalized);
+  return matched ? matched.path : "/";
+};
 
 export default function App() {
   const [currentRoute, setCurrentRoute] = useState<string>(() => {
-    const hash = window.location.hash;
-    if (hash === "#/research" || hash === "#research") return "/research";
-    if (hash === "#/features" || hash === "#features") return "/features";
-    if (hash === "#/about" || hash === "#about") return "/about";
-    if (hash === "#/download" || hash === "#download") return "/download";
-    if (hash === "#/demo" || hash === "#demo") return "/demo";
-    if (hash === "#/atlas" || hash === "#atlas") return "/atlas";
-    return "/";
+    return getRouteFromHash(window.location.hash);
   });
 
   const [theme, setTheme] = useState<string>(() => {
@@ -28,16 +45,7 @@ export default function App() {
 
   useEffect(() => {
     const handleHashChange = () => {
-      const hash = window.location.hash;
-      let computedRoute = "/";
-      if (hash === "#/research" || hash === "#research") computedRoute = "/research";
-      else if (hash === "#/features" || hash === "#features") computedRoute = "/features";
-      else if (hash === "#/about" || hash === "#about") computedRoute = "/about";
-      else if (hash === "#/download" || hash === "#download") computedRoute = "/download";
-      else if (hash === "#/demo" || hash === "#demo") computedRoute = "/demo";
-      else if (hash === "#/atlas" || hash === "#atlas") computedRoute = "/atlas";
-      
-      setCurrentRoute(computedRoute);
+      setCurrentRoute(getRouteFromHash(window.location.hash));
       window.scrollTo({ top: 0, behavior: "instant" as any });
     };
 
@@ -61,6 +69,8 @@ export default function App() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  const ActiveComponent = ROUTES.find(r => r.path === currentRoute)?.component || HomeView;
+
   return (
     <div className="min-h-screen bg-bg-main text-text-primary flex flex-col font-sans antialiased selection:bg-brand-electric selection:text-white relative overflow-x-hidden">
       
@@ -72,13 +82,15 @@ export default function App() {
 
       {/* Primary Page Stage Mount */}
       <main className="flex-grow flex flex-col w-full">
-        {currentRoute === "/" && <HomeView onNavigate={handleNavigate} />}
-        {currentRoute === "/research" && <ResearchView />}
-        {currentRoute === "/features" && <FeaturesView />}
-        {currentRoute === "/about" && <AboutView />}
-        {currentRoute === "/download" && <DownloadView />}
-        {currentRoute === "/demo" && <DemoView onNavigate={handleNavigate} />}
-        {currentRoute === "/atlas" && <AtlasView />}
+        <Suspense fallback={
+          <div className="flex-grow flex items-center justify-center min-h-[400px]">
+            <div className="text-[10px] font-mono tracking-widest text-brand-glow uppercase animate-pulse">
+              [ Loading view... ]
+            </div>
+          </div>
+        }>
+          <ActiveComponent onNavigate={handleNavigate} />
+        </Suspense>
       </main>
 
       {/* Consolidated Footer */}
