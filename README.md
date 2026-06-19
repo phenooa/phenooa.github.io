@@ -1,15 +1,9 @@
+# Sonder & Solitude
 
-# Run and deploy your AI Studio app
+A quiet repository dedicated to reflections on life, existence, and the art of being human.
 
-This contains everything you need to run your app locally.
+## Contents
+* [Philosophy of Being](philosophy_of_being.md) — Exploration of Wu Wei, Sonder, virtue, and mindfulness practices in English.
 
-## Run Locally
-
-**Prerequisites:**  Node.js
-
-
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+---
+> *"Walk gently on this earth, for you tread on dreams."*
