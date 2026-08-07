@@ -1,4 +1,4 @@
-import{c as m,r as c,j as e}from"./index-DZe8AEAv.js";import{m as s,A as j}from"./proxy-BEQbalIu.js";import{A as b,M as w}from"./maximize-2-CuED4OQj.js";import{D as k}from"./database-D0sXGcU2.js";import{V as C,H as v}from"./data-CiukrDvl.js";import{C as N}from"./cpu-BrnCRDu0.js";import{M as L}from"./monitor-C4ngeCKV.js";/**
+import{c as m,r as c,j as e}from"./index-BY8RXD3t.js";import{m as s,A as j}from"./proxy-C5P8sTdr.js";import{A as b,M as w}from"./maximize-2-DNEDP7ax.js";import{D as k}from"./database-DVnGBDI-.js";import{V as C,H as v}from"./data-CiukrDvl.js";import{C as N}from"./cpu-Vw5-hr0R.js";import{M as L}from"./monitor-DrHVJE6v.js";/**
  * @license lucide-react v0.546.0 - ISC
  *
  * This source code is licensed under the ISC license.
