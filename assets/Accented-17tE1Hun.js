@@ -1,0 +1,1 @@
+import{j as r}from"./index-D0SpiTIY.js";const t="bg-gradient-to-r from-brand-electric to-brand-glow bg-clip-text text-transparent";function a({text:n,accent:e}){const s=n.indexOf(e);return s<0?r.jsx(r.Fragment,{children:n}):r.jsxs(r.Fragment,{children:[n.slice(0,s),r.jsx("span",{className:t,children:e}),n.slice(s+e.length)]})}export{a as A,t as a};
