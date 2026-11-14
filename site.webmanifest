@@ -1,0 +1,8 @@
+{
+  "name": "PHENO-OA",
+  "short_name": "PHENO-OA",
+  "icons": [
+    {"src": "https://raw.githubusercontent.com/phenooa/assets/refs/heads/main/assets_web/logo/icon-192.png", "type": "image/png", "sizes": "192x192"},
+    {"src": "https://raw.githubusercontent.com/phenooa/assets/refs/heads/main/assets_web/logo/logo_2026.png", "type": "image/png", "sizes": "512x512"}
+  ]
+}
